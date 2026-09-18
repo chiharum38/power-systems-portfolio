@@ -1,14 +1,13 @@
-# 🔄 Keeping everything in sync
+# Keeping everything in sync
 
-> **You edit one file. Everything else follows.**
+One file is maintained by hand. Everything else is generated from it.
 
----
 
 ## The architecture
 
 ```
                       ┌─────────────────────────┐
-                      │     progress.json       │  ← the only file you edit
+                      │     progress.json       │   the source of truth   
                       │  (this repo, root)      │
                       └───────────┬─────────────┘
                                   │
@@ -31,6 +30,14 @@ as a local file (`file://`), and browsers block cross-origin `fetch` from local 
 A generated `.js` file loaded with `<script src>` works everywhere, always.
 
 ---
+
+## Site builds are automatic now
+
+The site repo has a GitHub Action (`.github/workflows/build.yml`) that runs
+`npm run build` and commits the generated HTML on every push, so for the
+notes section you only ever push markdown. A second workflow drafts a weekly
+reading round-up from daily.dev bookmarks every Sunday (`status: queued`,
+never auto-published) — see `chiharuma38.github.io/EDITING.md` for the flow.
 
 ## The weekly ritual · 3 minutes, Sunday
 
@@ -67,7 +74,7 @@ The script recalculates and overwrites whatever number is there.
 ### Move a project's status
 
 ```json
-"status": "planned"   →   "active"   →   "complete"
+"status": "planned"      "active"      "complete"
 ```
 
 | Status | Site badge | Bar colour | Use when |
@@ -76,7 +83,7 @@ The script recalculates and overwrites whatever number is there.
 | `active` | In progress | terracotta | You're working on it right now |
 | `complete` | Complete | sage | All milestones ticked, write-up published |
 
-> ⚠️ The script **refuses to sync** if a project is marked `complete` below 100%, or sits
+>  The script **refuses to sync** if a project is marked `complete` below 100%, or sits
 > at 100% without being marked complete. That guard exists so the public site can't
 > quietly overstate where you are.
 
@@ -118,18 +125,18 @@ python3 sync_progress.py --academy /some/other/path
 
 | Layer | Location | Purpose | Who sees it |
 |---|---|---|---|
-| 🔒 **Energy Systems Academy** | `~/Desktop` | Weekly plan, reading, papers, courses, reflection | You |
-| 🔧 **power-systems-portfolio** | this repo | The actual code and results | Public, technical |
-| 🌐 **chiharuma38.github.io** | `chiharuma38.github.io/` | The story, for recruiters | Public, everyone |
+|  **Energy Systems Academy** | `~/Desktop` | Weekly plan, reading, papers, courses, reflection | You |
+|  **power-systems-portfolio** | this repo | The actual code and results | Public, technical |
+|  **chiharuma38.github.io** | `chiharuma38.github.io/` | The story, for recruiters | Public, everyone |
 
 `progress.json` is the seam between them. It carries only the facts all three need:
 what's done, how far along, and what you're working on now.
 
 **Keep the boundary clean:**
 
-- Reflections, doubts, grades, salary research → Academy only. Never here.
-- Code, data, notebooks → this repo.
-- Narrative, framing, CV → the site.
+- Reflections, doubts, grades, salary research  Academy only. Never here.
+- Code, data, notebooks  this repo.
+- Narrative, framing, CV  the site.
 
 ---
 
@@ -152,8 +159,8 @@ for eight months is not.
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| Site shows old numbers | GitHub Pages cache | Wait ~1 min, then hard refresh (⌘⇧R) |
+| Site shows old numbers | GitHub Pages cache | Wait ~1 min, then hard refresh (⌘R) |
 | Site shows the fallback | `progress.json` didn't get committed to the site repo | `cd chiharuma38.github.io && git add -A && git push` |
 | Academy panel empty | `portfolio-progress.js` not generated | Run `sync_progress.py`; check the `--academy` path |
-| `✗ progress.json is not valid JSON` | Trailing comma, usually | The error prints the line number |
+| ` progress.json is not valid JSON` | Trailing comma, usually | The error prints the line number |
 | Percent looks wrong | Milestones disagree with `percent` | Milestones win by design, tick the right ones |
