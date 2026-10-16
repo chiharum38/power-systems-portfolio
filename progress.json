@@ -250,6 +250,60 @@
           "done": true
         }
       ]
+    },
+    {
+      "id": "06_nordic_bess",
+      "num": "06",
+      "name": "Nordic BESS Revenue Stack: What a Battery Earns in SE3",
+      "status": "active",
+      "percent": 35,
+      "headline": "Dispatch optimiser co-optimising FCR-D, FCR-N and day-ahead for a 10 MW battery in SE3; real-data calibration 2023-2025 in progress",
+      "tools": [
+        "NumPy",
+        "ENTSO-E",
+        "Svenska kraftnät FCR",
+        "Dynamic programming"
+      ],
+      "repo": "https://github.com/chiharum38/power-systems-portfolio/tree/main/06_nordic_bess",
+      "page": "projects/nordic_bess.html",
+      "milestones": [
+        {
+          "name": "Scope and README",
+          "done": true
+        },
+        {
+          "name": "Asset model and price loader",
+          "done": true
+        },
+        {
+          "name": "Dispatch optimiser with reserve constraints",
+          "done": true
+        },
+        {
+          "name": "Test suite incl. brute-force check",
+          "done": true
+        },
+        {
+          "name": "SE3 dataset 2023-2025 (ENTSO-E + Svk)",
+          "done": false
+        },
+        {
+          "name": "Annual revenue per MW-year by product",
+          "done": false
+        },
+        {
+          "name": "Forecast vs perfect-foresight gap",
+          "done": false
+        },
+        {
+          "name": "Project-finance layer (debt, DSCR, IRR)",
+          "done": false
+        },
+        {
+          "name": "Write-up with real results",
+          "done": false
+        }
+      ]
     }
   ]
 }
