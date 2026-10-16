@@ -4,8 +4,8 @@ sync_progress.py, one file in, three places out.
 
 progress.json is the single source of truth. Edit it, run this, and:
 
-  1. chiharuma38.github.io/progress.json          <- the live site reads this
-  2. chiharuma38.github.io/index.html             <- FALLBACK block refreshed
+  1. chiharum38.github.io/progress.json          <- the live site reads this
+  2. chiharum38.github.io/index.html             <- FALLBACK block refreshed
   3. Energy Systems Academy/01 Dashboard/         <- private dashboard reads this
        portfolio-progress.js
 
@@ -32,7 +32,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 SOURCE = HERE / "progress.json"
-SITE = HERE / "chiharuma38.github.io"
+SITE = HERE / "chiharum38.github.io"
 DEFAULT_ACADEMY = Path.home() / "Desktop" / "Energy-Systems-HQ" / "1-Academy"
 
 VALID_STATUS = {"complete", "active", "planned"}
@@ -111,7 +111,7 @@ def write_site_json(data: dict) -> bool:
     }
     (SITE / "progress.json").write_text(
         json.dumps(slim, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"{GREEN}✓{OFF} chiharuma38.github.io/progress.json")
+    print(f"{GREEN}✓{OFF} chiharum38.github.io/progress.json")
     return True
 
 
@@ -142,7 +142,7 @@ def write_site_fallback(data: dict) -> bool:
         return False
 
     index.write_text(pattern.sub(lambda _: block, html, count=1), encoding="utf-8")
-    print(f"{GREEN}✓{OFF} chiharuma38.github.io/index.html  (fallback refreshed)")
+    print(f"{GREEN}✓{OFF} chiharum38.github.io/index.html  (fallback refreshed)")
     return True
 
 
@@ -203,7 +203,7 @@ def main() -> None:
 
     print()
     print(f"{DIM}  next:{OFF}")
-    print(f"{DIM}    cd chiharuma38.github.io && git add -A && git commit -m 'Update progress' && git push{OFF}")
+    print(f"{DIM}    cd chiharum38.github.io && git add -A && git commit -m 'Update progress' && git push{OFF}")
     print(f"{DIM}    git add progress.json && git commit -m 'Update progress' && git push{OFF}")
     print()
 

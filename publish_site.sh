@@ -1,17 +1,16 @@
 #!/usr/bin/env bash
 # Publishes the portfolio site.
 #
-# Keeps the live June design and adds: five project write-ups, the four result
-# figures, and a downloadable CV. Your local branch and GitHub had diverged —
-# five commits from 24 June, made through the GitHub web UI, only ever touched
-# index.html and never reached this Mac. index.html on disk is that live design
-# with everything wired in, so this replays your work on top of GitHub's.
+# Replays the local index.html and project write-ups on top of the GitHub copy,
+# clearing any stale git lock files first.
 #
 #   bash ~/power-systems-portfolio/publish_site.sh
+#   MSG="Describe the change" bash ~/power-systems-portfolio/publish_site.sh
+
 set -euo pipefail
 
 ROOT=~/power-systems-portfolio
-SITE="$ROOT/chiharuma38.github.io"
+SITE="$ROOT/chiharum38.github.io"
 
 # ---------------------------------------------------------------- stale locks
 # Earlier git commands were run through a sandboxed shell that is not permitted
@@ -42,7 +41,7 @@ cd "$SITE"
 
 echo
 echo "==> Fetching what GitHub has"
-git fetch origin
+git fetch origin || echo "    (fetch failed; fine for a brand-new empty repo)"
 
 echo
 echo "==> Checking the five write-ups"
@@ -74,62 +73,34 @@ done
 echo "    ok   all five panels point at write-ups"
 
 echo
-echo "==> Replaying your work on top of GitHub's history"
-echo "    (your previous local commit stays recoverable via: git reflog)"
-git reset --soft origin/main
+echo "==> Committing site changes"
 git add -A
-
-echo
-echo "==> What is about to be published"
 git status --short
+if git diff --cached --quiet; then
+  echo "    nothing new to commit"
+else
+  git commit -q -m "${MSG:-Update site}"
+fi
 
 echo
-git commit -q -m "Publish project write-ups and add a downloadable CV
-
-Keeps the live site design. The five project panels now open full write-ups
-instead of pointing at the repository root, and the CV is downloadable from
-both the hero card and the contact section.
-
-  02  HVAC export cable    AC feasible to 160 km, 109 Mvar charging at 100 km
-  03  Fault detection      0.962 clean, chance level at 0.5 percent noise
-  04  Storage optimizer    duality verified, zero revenue below a 1.181 ratio
-  05  Contingency toolkit  2.85x on 4 cores, results verified identical
-
-Each page states the question, the method, the measured results and an
-explicit limitations section, matching the existing project 01 page.
-
-Also:
-- CV added at assets/Chiharu_Mamiya_CV.pdf under a stable filename, so the
-  link survives future updates
-- result figures added to images/, click to enlarge
-- panel 05 retitled from PSS/E Automation to Parallel N-1 Toolkit, and its
-  subtitle corrected to that project's own result
-- GE Vernova dates corrected to Oct 2025 to May 2026
-- hero, background and contact copy moved to present tense
-- fixed mobile horizontal overflow on wide tables, long DOIs and code lines
-- added .gitignore for .DS_Store"
-
-echo "==> Pushing the site"
-git push
+echo "==> Pushing the site to $(git remote get-url origin)"
+git push -u origin main
 
 # ---------------------------------------------------- the other repo, if dirty
 echo
 cd "$ROOT"
-if [ -n "$(git status --porcelain)" ]; then
-  echo "==> Portfolio repo has changes too, committing those"
-  git add -A
-  git status --short
-  git commit -q -m "Point sync_progress.py at the new Academy path
-
-The Energy Systems Academy moved into ~/Desktop/Energy-Systems-HQ/1-Academy
-during the folder reorganisation, so the default path in sync_progress.py
-no longer resolved."
-  git push
+git add -A
+if git diff --cached --quiet; then
+  echo "==> Portfolio repo already clean"
 else
-  echo "==> Portfolio repo already clean, nothing to push"
+  echo "==> Portfolio repo has changes too, committing those"
+  git status --short
+  git commit -q -m "${MSG:-Update portfolio}"
 fi
+echo "==> Pushing the portfolio repo"
+git push -u origin main
 
 echo
 echo "Done. GitHub Pages usually redeploys within a minute."
-echo "  Site   https://chiharuma38.github.io/"
-echo "  CV     https://chiharuma38.github.io/assets/Chiharu_Mamiya_CV.pdf"
+echo "  Site   https://chiharum38.github.io/"
+echo "  CV     https://chiharum38.github.io/assets/Chiharu_Mamiya_CV.pdf"

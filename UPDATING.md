@@ -37,7 +37,7 @@ The site repo has a GitHub Action (`.github/workflows/build.yml`) that runs
 `npm run build` and commits the generated HTML on every push, so for the
 notes section you only ever push markdown. A second workflow drafts a weekly
 reading round-up from daily.dev bookmarks every Sunday (`status: queued`,
-never auto-published) — see `chiharuma38.github.io/EDITING.md` for the flow.
+never auto-published) — see `chiharum38.github.io/EDITING.md` for the flow.
 
 ## The weekly ritual · 3 minutes, Sunday
 
@@ -52,7 +52,7 @@ python3 sync_progress.py
 
 # 3. publish
 git add progress.json && git commit -m "Update progress" && git push
-cd chiharuma38.github.io
+cd chiharum38.github.io
 git add -A && git commit -m "Update progress" && git push
 ```
 
@@ -127,7 +127,7 @@ python3 sync_progress.py --academy /some/other/path
 |---|---|---|---|
 |  **Energy Systems Academy** | `~/Desktop` | Weekly plan, reading, papers, courses, reflection | You |
 |  **power-systems-portfolio** | this repo | The actual code and results | Public, technical |
-|  **chiharuma38.github.io** | `chiharuma38.github.io/` | The story, for recruiters | Public, everyone |
+|  **chiharum38.github.io** | `chiharum38.github.io/` | The story, for recruiters | Public, everyone |
 
 `progress.json` is the seam between them. It carries only the facts all three need:
 what's done, how far along, and what you're working on now.
@@ -160,7 +160,7 @@ for eight months is not.
 | Symptom | Cause | Fix |
 |---|---|---|
 | Site shows old numbers | GitHub Pages cache | Wait ~1 min, then hard refresh (⌘R) |
-| Site shows the fallback | `progress.json` didn't get committed to the site repo | `cd chiharuma38.github.io && git add -A && git push` |
+| Site shows the fallback | `progress.json` didn't get committed to the site repo | `cd chiharum38.github.io && git add -A && git push` |
 | Academy panel empty | `portfolio-progress.js` not generated | Run `sync_progress.py`; check the `--academy` path |
 | ` progress.json is not valid JSON` | Trailing comma, usually | The error prints the line number |
 | Percent looks wrong | Milestones disagree with `percent` | Milestones win by design, tick the right ones |

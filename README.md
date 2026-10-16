@@ -56,7 +56,7 @@ Full citations are in each project README.
 ## Setup
 
 ```bash
-git clone https://github.com/chiharuma38/power-systems-portfolio.git
+git clone https://github.com/chiharum38/power-systems-portfolio.git
 cd power-systems-portfolio
 pip install -r requirements.txt
 jupyter notebook
@@ -81,7 +81,7 @@ This validates the file and propagates it to the portfolio site. See [`UPDATING.
 
 ## Portfolio site
 
-[chiharuma38.github.io](https://chiharuma38.github.io)
+[chiharum38.github.io](https://chiharum38.github.io)
 
 ---
 

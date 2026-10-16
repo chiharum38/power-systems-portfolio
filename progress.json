@@ -30,7 +30,7 @@
         "Python",
         "IEEE 39-bus"
       ],
-      "repo": "https://github.com/chiharuma38/power-systems-portfolio/tree/main/01_n1_contingency",
+      "repo": "https://github.com/chiharum38/power-systems-portfolio/tree/main/01_n1_contingency",
       "page": "projects/n1_contingency.html",
       "milestones": [
         {
@@ -71,7 +71,7 @@
         "110 kV XLPE cable data",
         "Reactive compensation"
       ],
-      "repo": "https://github.com/chiharuma38/power-systems-portfolio/tree/main/02_offshore_wind",
+      "repo": "https://github.com/chiharum38/power-systems-portfolio/tree/main/02_offshore_wind",
       "page": "projects/offshore_wind.html",
       "milestones": [
         {
@@ -116,7 +116,7 @@
         "IEEE 39-bus",
         "Noise sensitivity"
       ],
-      "repo": "https://github.com/chiharuma38/power-systems-portfolio/tree/main/03_fault_detection",
+      "repo": "https://github.com/chiharum38/power-systems-portfolio/tree/main/03_fault_detection",
       "page": "projects/fault_detection.html",
       "milestones": [
         {
@@ -165,7 +165,7 @@
         "IEEE 118-bus costs",
         "LP duality"
       ],
-      "repo": "https://github.com/chiharuma38/power-systems-portfolio/tree/main/04_storage_optimizer",
+      "repo": "https://github.com/chiharum38/power-systems-portfolio/tree/main/04_storage_optimizer",
       "page": "projects/storage_optimizer.html",
       "milestones": [
         {
@@ -214,7 +214,7 @@
         "multiprocessing",
         "IEEE 118-bus"
       ],
-      "repo": "https://github.com/chiharuma38/power-systems-portfolio/tree/main/05_contingency_toolkit",
+      "repo": "https://github.com/chiharum38/power-systems-portfolio/tree/main/05_contingency_toolkit",
       "page": "projects/contingency_toolkit.html",
       "milestones": [
         {

@@ -55,4 +55,4 @@ jupyter notebook Project1.ipynb
 
 ## Full documentation
 
-[chiharuma38.github.io/projects/n1_contingency.html](https://chiharuma38.github.io/projects/n1_contingency.html)
+[chiharum38.github.io/projects/n1_contingency.html](https://chiharum38.github.io/projects/n1_contingency.html)

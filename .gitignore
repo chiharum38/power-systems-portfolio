@@ -7,7 +7,10 @@ __pycache__/
 dist/
 build/
 venv/
-chiharuma38.github.io/
+chiharum38.github.io/
 
 .env
 results/*.parquet
+
+# local scratch
+Claude outputs/
